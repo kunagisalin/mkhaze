@@ -60,5 +60,10 @@ def deHaze(m, r=81, eps=0.001, w=0.95, maxV1=0.80, bGamma=False):
     return Y
   
 if __name__ == '__main__':
-    m = deHaze(cv2.imread('y.jpg')/255.0)*255
-    cv2.imwrite('h.jpg', m)
+    m = cv2.imread('y.jpg')/255.0
+    dc = np.min(m,2)
+    dc = guidedfilter(dc, zmMinFilterGray(dc,7),r=81, eps=0.001)
+    V1,A = getV1(m,r=81, eps=0.001, w=0.95, maxV1=0.80)
+    A = A*255
+    print(A)
+    cv2.imwrite('dc.jpg', dc)
