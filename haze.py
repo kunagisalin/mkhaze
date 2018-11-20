@@ -16,9 +16,9 @@ def mkhaze(m):
 
 
 if __name__ == '__main__':
-	m,a,b = mkhaze(cv2.imread('kire.png')/255.0)
+	m,a,b = mkhaze(cv2.imread('./data/3.jpg')/255.0)
 	m = m*255.0
 	a = str(round(a,2))
 	b = str(round(b,2))
-	str = 'haze'+a+'_'+b+'.jpg'
+	str = './data/3_'+a+'_'+b+'.jpg'
 	cv2.imwrite(str, m)
